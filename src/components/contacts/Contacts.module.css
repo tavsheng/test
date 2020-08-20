@@ -1,0 +1,23 @@
+.contacts {
+    color: white;
+    border-radius: 20px;
+    background-color: rgb(118, 177, 224);
+}
+.name {
+    padding: 10px;
+    font-size: large;
+} 
+.phone {
+    margin-left: 30px;
+    font-size: medium;
+}
+.addContactB {
+    padding: 10px;
+    color: white;
+    background-color: rgb(9, 58, 90);
+}
+.contactButton {
+    padding: 5px;
+    color: white;
+    background-color:  rgb(9, 58, 90) ;
+}

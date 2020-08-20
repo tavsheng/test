@@ -1,3 +1,11 @@
+сначала нужно установить node modules
+## npm install
+далее запустить проект
+## npm start
+логин: tavsheng@yandex.ru
+пароль: kope2erif19
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
