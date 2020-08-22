@@ -43,7 +43,7 @@ const Contact = ({ phonebook, deleteContact, updateName, updatePhone }) => {
                                                 className={style.contactButton}>Редактировать</button></span>
                                 }
                                 {editMode &&
-                                        <div onBlur={diactivateEditMode}>
+                                        <div>
                                                 <div>
                                                         <input onChange={onNameChange}
                                                                 
@@ -54,6 +54,7 @@ const Contact = ({ phonebook, deleteContact, updateName, updatePhone }) => {
                                                                
                                                                 value={phones} />
                                                 </div>
+                                                <div> <button onClick = {diactivateEditMode}>Сохранить</button></div>
                                         </div>
                                 }
 
