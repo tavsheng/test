@@ -4,7 +4,8 @@ import { stopSubmit } from "redux-form";
 const SET_USER_DATA = 'SET-USER-DATA';
 const ADD_CONTACT = 'ADD-CONTACT';
 const DELETE_CONTACT = 'DELETE-CONTACT';
-const UPDATE_CONTACT = 'UPDATE-CONTACT';
+const UPDATE_NAME = 'UPDATE-NAME';
+const UPDATE_PHONE = 'UPDATE-PHONE';
 
 
 let initialState = {
@@ -45,13 +46,21 @@ const authReducer = (state = initialState, action) => {
             phonebook: [...state.phonebook.filter(phonebook => phonebook.id !== action.id)],
           });
         }
-        case UPDATE_CONTACT:
+        case UPDATE_NAME:
           return {
             ...state,
             phonebook: state.phonebook.map(p => 
-                p.id === action.id ? { ...p, name: action.name, phone: action.phone } : p
+                p.id === action.id ? { ...p, name: action.name} : p
             ) 
         };
+        case UPDATE_PHONE:
+          return {
+            ...state,
+            phonebook: state.phonebook.map(p => 
+                p.id === action.id ? { ...p, phone: action.phone} : p
+            ) 
+        };
+
     default:
       return state;
   }
@@ -62,7 +71,9 @@ export const addContactAC = (newContact, number) => ({ type: ADD_CONTACT, newCon
 
 export const deleteContactAC = (id) => ({ type: DELETE_CONTACT, id })
 
-export const updateContactAC = (id, name, phone) => ({ type: UPDATE_CONTACT, id, name, phone})
+export const updateNameAC = (id, name) => ({ type: UPDATE_NAME, id, name})
+
+export const updatePhoneAC = (id, phone) => ({ type: UPDATE_PHONE, id, phone})
 
 
 export const setAuthUserData = (userId, email, login, isAuth) => ({

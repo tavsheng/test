@@ -22,7 +22,8 @@ const Contacts = (props) => {
                 key={p.id}
                 deleteContact = {props.deleteContact}
                 editContact = {props.editContact}
-                updateContact = {props.updateContact} />)}              
+                updateName = {props.updateName}
+                updatePhone = {props.updatePhone} />)}              
                 
             </div>
         </div>

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import Contacts from './Contacts';
-import { addContactAC, deleteContactAC, updateContactAC } from '../../redux/authReducer';
+import { addContactAC, deleteContactAC, updateNameAC, updatePhoneAC } from '../../redux/authReducer';
 
 
 let mapStateToProps = (state) => {
@@ -18,8 +18,11 @@ let mapDispatchToProps = (dispatch) => {
     deleteContact: (id) => {
       dispatch(deleteContactAC(id))
     },
-    updateContact: (id,name,phone) => {
-      dispatch(updateContactAC(id,name,phone))
+    updateName: (id,name) => {
+      dispatch(updateNameAC(id,name))
+    },
+    updatePhone: (id, phone) => {
+      dispatch(updatePhoneAC(id,phone))
     }
   }
 }

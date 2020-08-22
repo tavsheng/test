@@ -1,49 +1,65 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './Contacts.module.css'
 
 
-const Contact = ({ phonebook, deleteContact, updateContact}) => {
+const Contact = ({ phonebook, deleteContact, updateName, updatePhone }) => {
 
-        
+
         let [editMode, setEditMode] = useState(false);
 
-        let [contacts, setContact] = useState(phonebook.name + phonebook.phone);
+        let [names, setName] = useState(phonebook.name);
         useEffect(() => {
-                setContact(phonebook.name + phonebook.phone);
-        }, [phonebook.name + phonebook.phone]);
+                setName(phonebook.name);
+        }, [phonebook.name]);
+
+        let [phones, setPhone] = useState(phonebook.phone);
+        useEffect(() => {
+                setPhone(phonebook.phone);
+        }, [phonebook.phone]);
 
 
         const activateEditMode = () => {
                 setEditMode(true);
         }
-        const diactivateEditMode = (id, name, phone) => {
+        const diactivateEditMode = () => {
                 setEditMode(false);
-                updateContact(id, name, phone);
+                updateName(phonebook.id, names);
+                updatePhone(phonebook.id, phones);
         }
-        const onContactChange = (e) => {
-                setContact(e.currentTarget.value)
+        const onNameChange = (e) => {
+                setName( e.currentTarget.value)
         }
-        return (
-                <div>
 
-                        <div className={style.name}> {phonebook.name}</div>
-                        <div className={style.phone}>{phonebook.phone}</div>
-                        {!editMode &&
-                                <span><button onClick={activateEditMode}
-                                        className={style.contactButton}>Редактировать</button></span>
-                        }
-                        {editMode &&
-                                <div>
-                                        <input onChange={onContactChange}
-                                                autoFocus={true}
-                                                onBlur={diactivateEditMode}
-                                                value={phonebook.name + phonebook.phone} />
-                                </div>
-                        }
+        const onPhoneChange = (e) => {
+                setPhone( e.currentTarget.value)
+        }
+                return (
+                        <div>
 
-                        <span><button onClick={() => { deleteContact(phonebook.id); }}
-                                className={style.contactButton}>Удалить</button></span>
-                </div>
-        )
-}
-export default Contact;
+                                <div className={style.name}> {phonebook.name}</div>
+                                <div className={style.phone}>{phonebook.phone}</div>
+                                {!editMode &&
+                                        <span><button onClick={activateEditMode}
+                                                className={style.contactButton}>Редактировать</button></span>
+                                }
+                                {editMode &&
+                                        <div onBlur={diactivateEditMode}>
+                                                <div>
+                                                        <input onChange={onNameChange}
+                                                                
+                                                                value={names} />
+                                                </div>
+                                                <div>
+                                                        <input onChange={onPhoneChange}
+                                                               
+                                                                value={phones} />
+                                                </div>
+                                        </div>
+                                }
+
+                                <span><button onClick={() => { deleteContact(phonebook.id); }}
+                                        className={style.contactButton}>Удалить</button></span>
+                        </div>
+                )
+        }
+        export default Contact;
