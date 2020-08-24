@@ -38,7 +38,7 @@ const authReducer = (state = initialState, action) => {
       let number = action.number;
       return {
         ...state,
-        phonebook: [...state.phonebook, { id: 11, name: body, phone: number }]
+        phonebook: [...state.phonebook, { id: Date.now(), name: body, phone: number }]
       };
       case DELETE_CONTACT:
         {

@@ -11,7 +11,8 @@ const Contacts = (props) => {
     if (!props.auth.isAuth) return <Redirect to={"/login"} />
     let onAddContact = (values) => {
         props.addContact(values.newContact, values.number);
-    }
+     }
+  
 
     return (
 
